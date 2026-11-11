@@ -40,7 +40,7 @@ EOF
 # 2) packages
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt-get install -y python3-venv curl iw cage chromium seatd python3-evdev
+apt-get install -y python3-venv curl iw cage chromium seatd python3-evdev avahi-daemon
 iw dev wlan0 set power_save off || true
 systemctl enable wifi-powersave-off.service seatd
 systemctl start seatd || true
@@ -64,6 +64,10 @@ systemctl enable touchfix
 install -m 755 "$APP/deploy/scoreboard-wifi.py" /usr/local/bin/scoreboard-wifi
 install -m 440 "$APP/deploy/scoreboard-wifi.sudoers" /etc/sudoers.d/scoreboard-wifi
 visudo -cf /etc/sudoers.d/scoreboard-wifi || rm -f /etc/sudoers.d/scoreboard-wifi
+
+# phone app: announce the board on the network (mDNS / Bonjour) so the app finds it without an IP address
+install -m 644 "$APP/deploy/scoreboard.avahi.service" /etc/avahi/services/scoreboard.service
+systemctl enable avahi-daemon || true
 
 # 4) start the server at boot
 sed "s/YOURUSER/$USER_NAME/g" "$APP/deploy/scoreboard.service" > /etc/systemd/system/scoreboard.service

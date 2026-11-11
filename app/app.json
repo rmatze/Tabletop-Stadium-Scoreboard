@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "Scoreboard",
+    "slug": "tabletop-stadium-scoreboard",
+    "scheme": "tabletopscoreboard",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bombsurace.tabletopscoreboard",
+      "infoPlist": {
+        "NSLocalNetworkUsageDescription": "Scoreboard looks for your Tabletop Stadium Scoreboard on your Wi-Fi so you can change its settings.",
+        "NSBonjourServices": [
+          "_scoreboard._tcp"
+        ],
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        }
+      }
+    },
+    "android": {
+      "package": "com.bombsurace.tabletopscoreboard",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B0E12",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-image",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Scoreboard uses the camera to scan the QR code on your board.",
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "barcodeScannerEnabled": true
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ],
+      "expo-font"
+    ]
+  }
+}

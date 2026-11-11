@@ -178,6 +178,7 @@ size, set the browser's device toolbar to **1024 × 600**.
 - [x] Field frame: desk kickstand and wall keyholes, snap-in end zones
 - [x] Self-installing SD card, Wi-Fi setup from the screen
 - [x] OpenSCAD customizers: end zones, back tray (beta, being print-tested)
+- [ ] Phone app for iOS and Android (early, in [`app/`](app/README.md))
 - [ ] OpenSCAD customizer for the front (other screen sizes)
 - [ ] USB-C power board that works with any USB-C charger
 - [ ] Split frame for 256 mm printers (A1, P1, P2S, X1)

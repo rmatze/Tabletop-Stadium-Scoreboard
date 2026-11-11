@@ -25,6 +25,22 @@ jobs:
       - name: SD card script builds
         run: bash tools/build_sdcard_script.sh && bash -n dist/Automation_Custom_Script.sh
 
+  app:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci
+      - name: Phone app typechecks
+        run: npx tsc --noEmit
+
   openscad:
     runs-on: ubuntu-latest
     steps:

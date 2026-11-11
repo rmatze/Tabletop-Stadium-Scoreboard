@@ -622,7 +622,8 @@ def create_app(hub):
     def info():
         ip = lan_ip()
         port = request.host.split(":")[1] if ":" in request.host else "80"
-        return jsonify({"ip": ip, "settings_url": f"http://{ip}:{port}/settings" if ip else None})
+        return jsonify({"ip": ip, "settings_url": f"http://{ip}:{port}/settings" if ip else None,
+                        "app": "tabletop-stadium-scoreboard", "api": 1, "hostname": socket.gethostname()})
 
     @app.get("/api/qr.svg")
     def qr():

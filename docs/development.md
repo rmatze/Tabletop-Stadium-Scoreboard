@@ -30,6 +30,7 @@ Environment variables: `SCOREBOARD_SETTINGS` (path of `settings.json`), `SCOREBO
 | `deploy/` | kiosk script, services, touch fix, Wi-Fi helper and sudo rule |
 | `deploy/sdcard/` | the first-boot setup script (`script_head.sh`) and SD card instructions |
 | `tools/build_sdcard_script.sh` | packs the current code under `script_head.sh` into `dist/Automation_Custom_Script.sh` |
+| `app/` | the iOS and Android phone app (Expo); see [app/README.md](../app/README.md) |
 | `frame/field_frame.py` | CadQuery source for every frame part (the tested prints) |
 | `frame/openscad/` | OpenSCAD customizers (end zones, back tray) |
 
@@ -40,13 +41,18 @@ Environment variables: `SCOREBOARD_SETTINGS` (path of `settings.json`), `SCOREBO
 | `GET /api/state` | what's on screen, plus status |
 | `POST /api/control` `{"action": "next" \| "prev" \| "auto"}` | change screens |
 | `POST /api/control` `{"action": "pin", "game_id": "..."}` | lock a game |
+| `POST /api/control` `{"action": "lock"}` | lock the game on screen now |
 | `POST /api/test` `{"kind": "touchdown"}` | play an animation |
 | `GET/POST /api/settings` | read or change settings (partial updates are fine) |
 | `GET /api/wifi`, `GET /api/wifi/scan`, `POST /api/wifi/connect` | Wi-Fi status, scan, connect |
-| `GET /api/info` | the board's address and settings link |
+| `GET /api/info` | the board's address and settings link, plus `app`, `api` and `hostname` so the phone app can recognize it |
+| `GET /api/teams`, `GET /api/games` | teams by division; this week's games |
 | `GET /api/qr.svg` | QR code for the settings page |
 
 A physical button or knob only needs a tiny script that calls `/api/control`.
+
+The board announces itself on the network as `_scoreboard._tcp` (mDNS, `deploy/scoreboard.avahi.service`), which
+is how the phone app finds it.
 
 ## Building the SD card script
 

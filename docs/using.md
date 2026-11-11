@@ -21,6 +21,8 @@ Prev and Next **lock** the game on screen. It goes back to Auto 5 minutes after 
 Scan the QR code in quick settings, or open `http://<board address>:8080/settings`
 on any device on the same Wi-Fi.
 
+There's also an early [phone app](../app/README.md) for iOS and Android that finds the board on its own.
+
 ### Keyboard (when testing on a computer)
 
 | Key | Action |

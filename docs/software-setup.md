@@ -93,6 +93,7 @@ address and a QR code for the full settings page on your phone. Then [set your t
 - `touchfix`: a fix for touchscreens whose taps land in a corner on this kernel
 - A small helper that lets the scoreboard change Wi-Fi from the screen (one sudo rule, nothing else)
 - Wi-Fi power saving turned off, so other devices can always reach the board
+- `avahi-daemon`, so the [phone app](../app/README.md) finds the board on your Wi-Fi
 - Tailscale, only if you added a key
 
 Log: `/var/tmp/dietpi/logs/scoreboard-setup.log` (DietPi wipes `/var/log` at every reboot).

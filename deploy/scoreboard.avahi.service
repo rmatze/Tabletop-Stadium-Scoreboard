@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone='no'?>
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<!-- Announces the scoreboard on the home network (mDNS / Bonjour) so the phone app can find it
+     without typing an IP address. Install to /etc/avahi/services/scoreboard.service -->
+<service-group>
+  <name replace-wildcards="yes">Scoreboard (%h)</name>
+  <service>
+    <type>_scoreboard._tcp</type>
+    <port>8080</port>
+    <txt-record>api=1</txt-record>
+    <txt-record>path=/settings</txt-record>
+  </service>
+</service-group>
