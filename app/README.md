@@ -43,6 +43,10 @@ npm run android      # builds and opens an Android emulator or a plugged-in phon
 
 After the first build, `npx expo start` is enough to reload code changes.
 
+For Android, point `JAVA_HOME` at Android Studio's bundled JDK
+(`export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"` on a Mac). The first Android build
+compiles the native libraries and takes about five minutes; later builds take about a minute.
+
 To test without a board, run the demo server from the repo root (`python server.py --demo`) and advertise it from a
 Mac so the app can find it:
 

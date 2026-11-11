@@ -82,7 +82,10 @@ export function Chevron() {
 }
 
 export function SwitchRow({ value, onChange, ...rest }: Omit<RowProps, 'right' | 'onPress' | 'value'> & { value: boolean; onChange: (v: boolean) => void }) {
-  return <Row {...rest} right={<Switch value={value} onValueChange={v => { tap(); onChange(v); }} />} />;
+  const t = useTheme();
+  // iOS keeps its standard green switch; Android uses the board yellow, like Material's primary color.
+  const android = Platform.OS === 'android' ? { trackColor: { true: t.accentFill, false: t.line }, thumbColor: value ? t.onAccent : undefined } : {};
+  return <Row {...rest} right={<Switch value={value} onValueChange={v => { tap(); onChange(v); }} {...android} />} />;
 }
 
 /** A number field that saves when you finish typing, clamped like config.py does. */
